@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Delegete__.Models;
+using FluentFTP.Helpers;
+using System;
 
 namespace Delegete__
 {
@@ -6,7 +8,7 @@ namespace Delegete__
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+
         }
     }
 }
