@@ -20,14 +20,17 @@ namespace Delegete__.Models
    * yoxlamasın əgər həmin name-də book varsa AlreadyExistsException geriyə qaytarılsın 
  * əks halda Book obyektini books listinə əlavə etsin əgər limir aşılarsa CapacityLimitException baş versin.*/
   public void AddBook(Book book)
-        {
-            if (book.IsDelated( book))
-            {
-
-            }
-            else
-            {
+     {
+            
+            
+            
                 foreach (var item in Books)
+            {
+                if (item.IsDelated())
+                {
+                   
+                }
+                else
                 {
                     if (book.Name == item.Name)
                     {
@@ -36,18 +39,67 @@ namespace Delegete__.Models
                     }
                     else
                     {
+                        if (book.Count <= BookLimit)
+                        {
+                            Books.Add(book);
+                            Console.WriteLine($"{item.Name} adli kitab elave olundu");
+                        }
+                        else
+                        {
+                            Exceptions.Capasit();
 
-                        
+                        }
+
                     }
+                }
+                   
 
                 }
 
 
+            
+
+
+
+      }
+        /*- GetBookById() - parametr olaraq nullable int tipindən bir id qəbul edəcək həmin id-li və isDeleted 
+         * statusu false olan Book obyketini tapıb geriyə 
+         * qaytaracaq əgər id null gələrsə NullReferenceException
+         * qaytaracaq əgər heç bir kitab tapmasa null  qaytaracaq.*/
+        public void GetBookById(int ? id)
+        {
+            foreach (var item in Books)
+            {
+                if (item.IsDelated())
+                {
+
+                }
+                else
+                {
+                    if (id==item.Id)
+                    {
+                        item.ShowInfo(); return;
+                    }
+                    
+
+                    
+                }
+
             }
+            if (id==null)
+            {
+                throw new Exception("NullReferenceException");
+            }
+
+   
 
 
 
         }
+        /*EditBookName() - parametr olaraq int tipindən nullable bir id qəbul edəcək həmin id-li
+    * book-u tapıb name-ni dəyişəcək əgər id null olarsa NullReferenceException qaytaracaq əgər elə bir
+    * book tapmasa NotFoundException qaytaracaq.
+*/
 
     }
 }

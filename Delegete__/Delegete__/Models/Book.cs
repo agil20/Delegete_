@@ -18,8 +18,10 @@ namespace Delegete__.Models
         public string AuthorName { get; set; }
         public string Name { get; set; }
         public int PageCount { get; set; }
-        public bool IsDelated(Book book)
+        public bool IsDelated()
+
         {  bool result = false;
+
             return result;
         }
         public void ShowInfo()
