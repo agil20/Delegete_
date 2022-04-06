@@ -12,14 +12,33 @@ namespace Delegete__
           * olunsun əgər olmayan bir role daxil edilsə yenidən role dəyəri istənsin.*/
             string user = Console.ReadLine();
             string email= Console.ReadLine();
-            Roler roler = new Roler();
-        
+            string rolerr= Console.ReadLine();
+          
+          
+    }        public static  void Rollers(string roler)
+        {       
+            bool loop = false;
+            Roler rolerr;
             do
             {
+               
 
-            } while (roler!=Roler.Admin&&  roler!=Roler.Member);
+                if (roler == "Admin")
+                { 
+                    rolerr = Roler.Admin;
+                  
+                }
+                else if (roler == "Member")
+                {
+                    rolerr = Roler.Member;
+                }
+             
+                else
+                { loop = true; }
 
+
+            } while (loop);
 
         }
     }
-}
+    }
