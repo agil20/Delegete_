@@ -55,9 +55,8 @@ namespace Delegete__.Models
                    
 
                 }
+           
 
-
-            
 
 
 
@@ -99,7 +98,46 @@ namespace Delegete__.Models
         /*EditBookName() - parametr olaraq int tipindən nullable bir id qəbul edəcək həmin id-li
     * book-u tapıb name-ni dəyişəcək əgər id null olarsa NullReferenceException qaytaracaq əgər elə bir
     * book tapmasa NotFoundException qaytaracaq.
-*/
+    *
+*/    public void EditBookName(int? id)
+        {
+            foreach (var item in Books)
+            {
+                if (item.Id==id)
+                { 
+                    
+              item.Name = null;
+                    item.Name = Console.ReadLine();
+                    Console.WriteLine($"Elave olundu {item.Name}");
+                    item.ShowInfo(); return;
 
+                }
+                else
+                {
+                    Exceptions.NotFaund();
+                }
+                if (id==null)
+                {
+                   throw new Exception("NullReferenceException");
+
+                }
+            }
+        }
+        /*- FilterByPageCount() - parametr olaraq minPageCount və maxPageCount qəbul
+         * edəcək bu aralıqda olan və isDeleted
+         * statusu false olan book obyektlərini tapıb geriyə qaytaracaq.*/
+
+        public void FilterByPageCount(int minPageCount,int maxPageCount)
+        {
+            foreach (var item in Books)
+            {
+                if (!(item.Count<=minPageCount&& item.Count>=maxPageCount&& item.IsDelated()))
+                {
+                    item.ShowInfo();
+
+                }
+
+            }
+        }
     }
 }
