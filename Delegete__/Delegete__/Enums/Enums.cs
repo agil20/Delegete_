@@ -9,8 +9,6 @@ namespace Utils.Enums
     internal class Enum
     {
         public enum Roler{ Admin=1,Member };
-
-      
        
 
     }
