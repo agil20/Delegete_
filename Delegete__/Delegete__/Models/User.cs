@@ -29,5 +29,6 @@ namespace Delegete__.Models
             UserName = username; Email = email; Roler = roler; 
         }
 
+
     }
 }

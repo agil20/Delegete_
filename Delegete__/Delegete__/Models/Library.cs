@@ -10,15 +10,14 @@ namespace Delegete__.Models
     internal class Library : IEntity
     {
         public int Id { get { return Id; } }
-        /*- BookLimit
-- Books - Book obyektlərini özündə saxlayan bir list olacaq və private olacaq*/
+       
         public int BookLimit { get; set; }
-        private List<Book> Books = new List<Book>();
-  /*- AddBook() - parametr olaraq bir Book obyekti qəbul edəcək ilk olaraq yoxlayacaq ki 
-   * listdə həmin book-un name-i ilə eyni name-də olan başqa book obyekti varsa əlavə etməyəcək
-   * həmçinin bu yoxlanışda baxmaq lazımdıki isDeleted dəyəri false olanlara baxsın true olanları 
-   * yoxlamasın əgər həmin name-də book varsa AlreadyExistsException geriyə qaytarılsın 
- * əks halda Book obyektini books listinə əlavə etsin əgər limir aşılarsa CapacityLimitException baş versin.*/
+        private List<Book> Books;
+        public Library()
+        {
+Books= new List<Book>();    
+        }
+
   public void AddBook(Book book)
      {
             
@@ -67,28 +66,8 @@ namespace Delegete__.Models
          * qaytaracaq əgər heç bir kitab tapmasa null  qaytaracaq.*/
         public void GetBookById(int ? id)
         {
-            foreach (var item in Books)
-            {
-                if (item.IsDelated())
-                {
-
-                }
-                else
-                {
-                    if (id==item.Id)
-                    {
-                        item.ShowInfo(); return;
-                    }
-                    
-
-                    
-                }
-
-            }
-            if (id==null)
-            {
-                throw new Exception("NullReferenceException");
-            }
+     Book book=    Books.Find(x => x.Id == id);
+           
 
    
 
